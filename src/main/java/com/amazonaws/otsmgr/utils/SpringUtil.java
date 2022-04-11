@@ -1,4 +1,4 @@
-package com.amazonaws.otsmgr;
+package com.amazonaws.otsmgr.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

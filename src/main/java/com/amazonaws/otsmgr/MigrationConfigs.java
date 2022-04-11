@@ -7,103 +7,70 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "ots.migration.config")
 public class MigrationConfigs {
 
-    private String headers;
-    private String endPoint;
+    private String sourceEndPoint;
     private String accessKeyId;
     private String accessKeySecret;
     private String instanceName;
     private String tableName;
     private String tunnelName;
-    private String bucketName;
-    private String cdcPrefix;
-    private String akAWS;
-    private String skAWS;
+    private String targetEndpoint;
 
-    public String getHeaders() {
-        return headers;
-    }
 
-    public void setHeaders(String headers) {
-        this.headers = headers;
-    }
-
-    public String getEndPoint() {
-        return endPoint;
-    }
-
-    public void setEndPoint(String endPoint) {
-        this.endPoint = endPoint;
-    }
-
-    public String getAccessKeyId() {
-        return accessKeyId;
+    public void setSourceEndPoint(String sourceEndPoint) {
+        this.sourceEndPoint = sourceEndPoint;
     }
 
     public void setAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
     }
 
-    public String getAccessKeySecret() {
-        return accessKeySecret;
-    }
-
     public void setAccessKeySecret(String accessKeySecret) {
         this.accessKeySecret = accessKeySecret;
-    }
-
-    public String getInstanceName() {
-        return instanceName;
     }
 
     public void setInstanceName(String instanceName) {
         this.instanceName = instanceName;
     }
 
-    public String getTableName() {
-        return tableName;
-    }
-
     public void setTableName(String tableName) {
         this.tableName = tableName;
-    }
-
-    public String getTunnelName() {
-        return tunnelName;
     }
 
     public void setTunnelName(String tunnelName) {
         this.tunnelName = tunnelName;
     }
 
-    public String getBucketName() {
-        return bucketName;
+    public void setTargetEndpoint(String targetEndpoint) {
+        this.targetEndpoint = targetEndpoint;
     }
 
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
+
+    public String getSourceEndPoint() {
+        return sourceEndPoint;
     }
 
-    public String getCdcPrefix() {
-        return cdcPrefix;
+    public String getAccessKeyId() {
+        return accessKeyId;
     }
 
-    public void setCdcPrefix(String cdcPrefix) {
-        this.cdcPrefix = cdcPrefix;
+    public String getAccessKeySecret() {
+        return accessKeySecret;
     }
 
-    public String getAkAWS() {
-        return akAWS;
+    public String getInstanceName() {
+        return instanceName;
     }
 
-    public void setAkAWS(String akAWS) {
-        this.akAWS = akAWS;
+    public String getTableName() {
+        return tableName;
     }
 
-    public String getSkAWS() {
-        return skAWS;
+    public String getTunnelName() {
+        return tunnelName;
     }
 
-    public void setSkAWS(String skAWS) {
-        this.skAWS = skAWS;
+    public String getTargetEndpoint() {
+        return targetEndpoint;
     }
+
 }
