@@ -1,5 +1,5 @@
 # OTS-Migration
-SpringBoot application for Aliyun TableStore migrate to AWS DynamoDB, Support both full data transfer and incremental data transfer.
+SpringBoot application for Aliyun TableStore migrate to AWS DynamoDB based on TableStore Tunnel Service, Support both full data transfer and incremental data transfer.
 
 # Configuration
 edit file /src/main/resources/application.properties with Aliyun Table configure and AWS Dynamo configure, eg:
