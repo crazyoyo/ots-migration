@@ -30,4 +30,14 @@ public class MigrationColumn {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof MigrationColumn)) {
+            return false;
+        }
+
+        MigrationColumn col = (MigrationColumn) o;
+        return this.name.equalsIgnoreCase(col.getName());
+    }
 }
