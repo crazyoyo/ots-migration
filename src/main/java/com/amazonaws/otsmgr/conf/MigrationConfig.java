@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "ots.migration.config")
@@ -25,21 +27,17 @@ public class MigrationConfig {
     private String migrationType;
     private boolean restart;
 
-    private String tablePKs;
-    private String tableColumns;
-    private String[] _tablePKs;
-    private String[] _tableColumns;
-    private String[] _allTableColumns;
+    private Map<String, String[]> tablePKs;
+    private Map<String, String[]> tableColumns;
+    private Map<String, String[]> allTableColumns;
 
     @PostConstruct
     private void init() {
-        _tableColumns = Arrays.stream(tableColumns.split(","))
-                .toArray(String[]::new);
-
-        _tablePKs = Arrays.stream(tablePKs.split(","))
-                .toArray(String[]::new);
-
-        _allTableColumns = ArrayUtils.addAll(_tablePKs, _tableColumns);
+        allTableColumns = new HashMap<>();
+        for (String tableName : tableNames) {
+            String[] allTableColumnsArr = ArrayUtils.addAll(tablePKs.get(tableName), tableColumns.get(tableName));
+            allTableColumns.put(tableName, allTableColumnsArr);
+        }
     }
 
     public void setSourceEndPoint(String sourceEndPoint) {
@@ -88,11 +86,11 @@ public class MigrationConfig {
         this.restart = restart;
     }
 
-    public void setTablePKs(String tablePKs) {
+    public void setTablePKs(Map<String, String[]> tablePKs) {
         this.tablePKs = tablePKs;
     }
 
-    public void setTableColumns(String tableColumns) {
+    public void setTableColumns(Map<String, String[]> tableColumns) {
         this.tableColumns = tableColumns;
     }
 
@@ -128,16 +126,16 @@ public class MigrationConfig {
         return s3BuckeName;
     }
 
-    public String[] getTablePKs() {
-        return _tablePKs;
+    public Map<String, String[]> getTablePKs() {
+        return tablePKs;
     }
 
-    public String[] getTableColumns() {
-        return _tableColumns;
+    public Map<String, String[]> getTableColumns() {
+        return tableColumns;
     }
 
-    public String[] getAllTableColumns() {
-        return _allTableColumns;
+    public Map<String, String[]>  getAllTableColumns() {
+        return allTableColumns;
     }
 
     public String getMigrationTarget() {

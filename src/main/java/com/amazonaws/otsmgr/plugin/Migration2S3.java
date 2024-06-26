@@ -103,7 +103,7 @@ public class Migration2S3 extends MigrationPluginParent {
                                     return mcol;
                                 }).collect(Collectors.toList());
 
-                                String[] col_values = Arrays.stream(config.getTableColumns()).map(col -> {
+                                String[] col_values = Arrays.stream(config.getTableColumns().get(tableName)).map(col -> {
                                     MigrationColumn _mcol = new MigrationColumn();
                                     _mcol.setName(col);
                                     int i = mcols.indexOf(_mcol);
@@ -115,7 +115,7 @@ public class Migration2S3 extends MigrationPluginParent {
                             .collect(Collectors.toList());
                     log.info("Finished to deal with ProcessRecordsInput.");
                     log.info("Start to write to ByteArrayOutputStream.");
-                    lines.add(0, config.getAllTableColumns());
+                    lines.add(0, config.getAllTableColumns().get(tableName));
                     writer.writeAll(lines);
                     writer.flush();
                     log.info("Finished to write to ByteArrayOutputStream.");
