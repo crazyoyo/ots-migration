@@ -17,9 +17,9 @@ public abstract class MigrationPluginParent implements MigrationPluginInterface 
     @Autowired
     private OTSUtil otsUtil;
 
-    public List<MigrationTable> sourceTables(MigrationConfig config) {
+    public List<MigrationTable> sourceTables() {
         log.info("Get from source TableStore.");
-        List<MigrationTable> migrationTables = otsUtil.getAllTableSchema(config);
+        List<MigrationTable> migrationTables = otsUtil.getAllTableSchema();
         log.info("Finished Get from source TableStore.");
         return migrationTables;
     }

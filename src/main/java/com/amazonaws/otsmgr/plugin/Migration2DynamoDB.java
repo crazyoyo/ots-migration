@@ -40,8 +40,8 @@ public class Migration2DynamoDB extends MigrationPluginParent {
     @Override
     public void migrate(MigrationConfig config) {
         log.info("Started migrating TableStore to DynamoDB.");
-        List<MigrationTable> sourceTables = sourceTables(config);
-        List<MigrationTable> _sourceTables = sourceTables(config);
+        List<MigrationTable> sourceTables = sourceTables();
+        List<MigrationTable> _sourceTables = new ArrayList<>();
         if(!CollectionUtils.isEmpty(config.getTableNames())) {
             _sourceTables = sourceTables.stream().filter(t ->
                 CollectionUtils.contains(config.getTableNames().iterator(), t.getTableMeta().getTableName())

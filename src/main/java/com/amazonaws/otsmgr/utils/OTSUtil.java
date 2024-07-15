@@ -35,7 +35,7 @@ public class OTSUtil {
         tunnelClient = new TunnelClient(migrationConfig.getSourceEndPoint(), migrationConfig.getAccessKeyId(), migrationConfig.getAccessKeySecret(), migrationConfig.getInstanceName());
     }
 
-    public List<MigrationTable> getAllTableSchema(MigrationConfig config) {
+    public List<MigrationTable> getAllTableSchema() {
         List<MigrationTable> tableSchemas = new ArrayList<>();
         ListTableResponse listTableResponse = client.listTable();
         for (String tableName : listTableResponse.getTableNames()) {
