@@ -2,7 +2,9 @@ package com.amazonaws.otsmgr.plugin;
 
 public enum MigrationTargetEnum {
     DynamoDB,
-    S3;
+    S3,
+    MongoDB;
+
 
     public static MigrationTargetEnum valueOfIgnoreCase(String name) {
         for (MigrationTargetEnum value : values()) {
